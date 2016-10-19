@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+    *{
+        margin:0px;
+        padding:0px;
+    }
+    #box{
+        width:1300px;
+        height:400px;
+        margin:100px auto;
+        overflow: hidden;
+    }
+    #box ul{
+        height:400px;
+        width:1300px;
+    }
+    #box ul li{
+        width:240px;
+        height:400px;
+        float:left;
+        overflow: hidden;
+    }
+</style>
+<body>
+<div id="box">
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+</body>
+<script>
+    window.onload = function () {
+        var box = document.getElementById('box');
+        var aLi = box.children[0].children;
+        for(var i=0;i<aLi.length;i++){
+            aLi[i].style.backgroundImage = 'url(' + 'images/' + (i + 1) + '.jpg';
+            aLi[i].onmouseover = function(){
+                for(var i=0;i<aLi.length;i++){
+                    animate(aLi[i],{width:100});
+                }
+                animate(this,{width:800});
+            };
+            aLi[i].onmouseout = function(){
+                for(var i=0;i<aLi.length;i++){
+                    animate(aLi[i],{width:240});
+                }
+            }
+        }
+    }
+    function getStyle(obj,attr) {
+        if(obj.currentStyle){
+            return obj.currentStyle[attr];//为了获取IE下的属性值
+        }else{
+            return window.getComputedStyle(obj,null)[attr];//为了获取W3C浏览器下的属性值
+        }
+    }
+
+    function animate(obj,json){
+        clearInterval(obj.timer);
+        obj.timer = setInterval(function () {
+            var flag = true;
+            var current = 0;
+            for(var attr in json){
+                if(attr == 'opacity'){
+                    current = parseInt(getStyle(obj,attr)*100);
+                }else{
+                    current = parseInt(getStyle(obj,attr));
+                };
+
+                var step = (json[attr] - current) / 10;
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                //先判断属性是否为透明度
+                if(attr == 'opacity'){
+                    //首先判断浏览器是否支持opacity
+                    if('opacity' in obj.style){
+                        obj.style.opacity = (current + step) / 100;
+                    }else{
+                        obj.style.filter = 'alpha(opacity = ' + (current + step) + ')';
+                    }
+                    //再判断属性是否为z-index
+                }else if(attr == 'zIndex'){
+                    obj.style.zIndex = json[attr];
+                    //最后再判断
+                }else{
+                    obj.style[attr] = current + step + 'px';
+                }
+
+                if(current != json[attr]){
+                    flag = false;
+                }
+            }
+
+            if(flag){
+                clearInterval(obj.timer);
+            }
+        },5);
+    }
+</script>
+</html>

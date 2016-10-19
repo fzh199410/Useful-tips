@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #example1	{
+            width: 200px;
+            height: 200px;
+            /* 底色 */
+            background-color: #063053;
+            /* chrome 2+, safari 4+; multiple color stops */
+            background-image:-webkit-gradient(linear, left bottom, left top, color-stop(0.32, #063053), color-stop(0.66, #395873), color-stop(0.83, #5c7c99));
+            /* chrome 10+, safari 5.1+ */
+            background-image: -webkit-linear-gradient(#063053, #395873, #5c7c99);
+            /* firefox; multiple color stops */
+            background-image: -moz-linear-gradient(top,#063053, #395873, #5c7c99);
+            /* ie 6+ */
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#063053', endColorstr='#395873');
+            /* ie8 + */
+            -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#063053', endColorstr='#395873')";
+            /* ie10 */
+            background-image: -ms-linear-gradient(#063053, #395873, #5c7c99);
+            /* opera 11.1 */
+            background-image: -o-linear-gradient(#063053, #395873, #5c7c99);
+            /* 标准写法 */
+            background-image: linear-gradient(#063053, #395873, #5c7c99);
+        }
+        #example2{
+            width: 200px;
+            height: 200px;
+
+            /* fallback */
+            background-color:#063053;
+            /* chrome 2+, safari 4+; multiple color stops */
+            background-image:-webkit-gradient(linear, left bottom, right top, color-stop(0.32, #063053), color-stop(0.66, #395873), color-stop(0.83, #5c7c99));
+            /* chrome 10+, safari 5.1+ */
+            background-image:-webkit-linear-gradient(45deg, #063053, #395873, #5c7c99);
+            /* firefox; multiple color stops */
+            background-image:-moz-linear-gradient(45deg, #063053, #395873, #5c7c99);
+            /* ie10 */
+            background-image: -ms-linear-gradient(45deg, #063053 0%, #395873 100%);
+            /* opera 11.1 */
+            background-image: -o-linear-gradient(45deg, #063053, #395873);
+            /* The "standard" */
+            background-image: linear-gradient(45deg, #063053, #395873);
+
+        }
+        #example3	{
+            width: 200px;
+            height: 200px;
+            /* fallback */
+            background-color:#063053;
+            /* chrome 2+, safari 4+; multiple color stops */
+            background-image:-webkit-gradient(linear, left bottom, left top, color-stop(0.20, red), color-stop(0.40, green), color-stop(0.6, blue), color-stop(0.8, purple), color-stop(1, orange));
+            /* chrome 10+, safari 5.1+ */
+            background-image:-webkit-linear-gradient(red, green, blue, purple, orange);
+            /* firefox; multiple color stops */
+            background-image:-moz-linear-gradient(top, red, green, blue, purple, orange);
+            /* ie10 */
+            background-image: -ms-linear-gradient(red, green, blue, purple, orange);
+            /* opera 11.1 */
+            background-image: -o-linear-gradient(red, green, blue, purple, orange);
+            /* The "standard" */
+            background-image: linear-gradient(45deg,red, green, blue, purple, orange);
+        }
+        #example4{
+            width: 200px;height: 200px;
+            background-image: -webkit-gradient(radial, center center, 0, center center, 220, color-stop(0.20, red), color-stop(0.40, green), color-stop(0.6, blue), color-stop(0.8, purple), color-stop(1, orange));
+        }
+    </style>
+</head>
+<body>
+<div id="example1"></div>
+<div id="example2"></div>
+<div id="example3"></div>
+<div id="example4"></div>
+<div id="example5"></div>
+
+</body>
+</html>
